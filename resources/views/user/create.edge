@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello Adonis</title>
+  {{ style('style') }}
+  {{ cspMeta() }}
+</head>
+<body>
+    <div class="subtitle">
+
+      <form method="POST" action="{{ route('UserController.store') }}">
+        <div>
+          <input type="text" name="username" value="{{ old('username', '') }}" placeholder="User Name" />
+          <br/>
+          {{ elIf('<span>$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
+        </div>
+
+        <div>
+          <input type="text" name="email" value="{{ old('email', '') }}" placeholder="Email" />
+          <br/>
+          {{ elIf('<span>$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+        </div>
+
+        <div>
+          <input type="password" name="password" placeholder="Password" />
+          <br/>
+          {{ elIf('<span>$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
+        </div>
+
+        {{ csrfField() }}
+        <br/>
+        <button type="submit"> Submit </button>
+      </form>
+
+    </div>
+</body>
+</html>
